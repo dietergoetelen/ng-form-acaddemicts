@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+@using System.Web.Optimization
+
+
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    
+    @Styles.Render(ngFormAcaddemicts.MVC.App_Start.BundleConfig.Bootstrap)
+
+</head>
+<body>
+    <div>
+        
+    </div>
+
+    
+    @Scripts.Render(ngFormAcaddemicts.MVC.App_Start.BundleConfig.Angular)
+    @Scripts.Render(ngFormAcaddemicts.MVC.App_Start.BundleConfig.App)
+</body>
+</html>
