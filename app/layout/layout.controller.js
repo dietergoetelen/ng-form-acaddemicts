@@ -8,6 +8,7 @@
         var vm = this;
 
         vm.formData = {};
+        vm.attributes = { required: true, minlength: 5 };
     }
 
 }());

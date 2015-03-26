@@ -5,21 +5,21 @@
     angular.module('acaddemict.form')
         .directive('adFormControl', adForm);
 
-    adForm.$inject = [];
-    function adForm() {
+    adForm.$inject = ['$compile'];
+    function adForm($compile) {
         var vm = {};
 
         vm.restrict = "E";
         vm.templateUrl = "app/adForm/ad-form-control.tmpl.html";
         vm.scope = {
             text: '@',
+            name: '@',
             model: '=',
-            attributes: '='
+            attrs: '='
         };
         vm.link = link;
         vm.controller = controller;
-        vm.controllerAs = "adForm";
-        vm.bindToController = true;
+        vm.require = "?^form";
 
         return vm;
 
@@ -27,13 +27,17 @@
 
         }
 
-        function link(scope, element, attrs) {
-            var $element = angular.element(element.find('input')[0]);
+        function link(scope, element, attrs, form) {
+            scope.form = form;
 
-            if (angular.isObject(scope.adForm.attributes)) {
-                angular.forEach(scope.adForm.attributes, function (val, key) {
+            var $element = angular.element(element.find('input')[0]);
+            if (angular.isObject(scope.attrs)) {
+
+                angular.forEach(scope.attrs, function (val, key) {
                     $element.attr(key, val);
                 });
+
+                $compile(element.contents())(scope);
             }
         }
     }
