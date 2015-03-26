@@ -15,9 +15,17 @@
     @Styles.Render(ngFormAcaddemicts.MVC.App_Start.BundleConfig.Bootstrap)
 
 </head>
-<body>
-    <div>
+<body ng-controller="LayoutController as layout">
+    <div class="container">
         
+        <div class="row">
+            <div class="col-md-6">
+                <ad-form-control attributes="{ required: true}" text="myLabel" model="layout.formData.test"></ad-form-control>
+            </div>
+        </div>
+
+        {{ layout.formData.test }}
+
     </div>
 
     
